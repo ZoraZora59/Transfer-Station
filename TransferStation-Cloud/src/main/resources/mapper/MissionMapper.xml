@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zora.cloud.repository.MissionMapper">
+    <update id="updatePushTime">
+        UPDATE download_job
+        SET `push_time` = CURRENT_TIMESTAMP
+        WHERE `id` = #{id}
+    </update>
+    <update id="updatePushTimeReset">
+        UPDATE download_job
+        SET `push_time` = NULL
+        WHERE `id` = #{id}
+    </update>
+    <delete id="deleteById">
+        DELETE
+        FROM download_job
+        WHERE `id` = #{id}
+    </delete>
+    <select id="selectAll" resultType="cn.zora.base.model.JobEntity" parameterType="boolean">
+        SELECT *
+        FROM download_job
+        <where>
+            <choose>
+                <when test="pushed == true">
+                    push_time IS NOT NULL
+                </when>
+                <when test="pushed == false">
+                    push_time IS NULL
+                </when>
+            </choose>
+        </where>
+        ORDER BY create_time DESC;
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM download_job
+        <where>
+            <choose>
+                <when test="pushed == true">
+                    push_time IS NOT NULL
+                </when>
+                <when test="pushed == false">
+                    push_time IS NULL
+                </when>
+            </choose>
+        </where>
+        ;
+    </select>
+    <select id="selectNotPushedOne" resultType="cn.zora.base.model.JobEntity">
+        SELECT *
+        FROM download_job
+        <where>
+            push_time IS NULL
+            <choose>
+                <when test="latest == true">
+                    ORDER BY create_time DESC
+                </when>
+                <when test="latest == false">
+                    ORDER BY create_time ASC
+                </when>
+            </choose>
+        </where>
+        LIMIT 1;
+    </select>
+    <insert id="insertEntity">
+        INSERT INTO download_job(`title`, `description`, `download_url`) VALUE (#{title}, #{description}, #{downloadUrl});
+    </insert>
+
+</mapper>
