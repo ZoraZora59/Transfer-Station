@@ -3,8 +3,8 @@
 * 下载中转站，利用云服务器，远程控制家里或公司的下载机启动Aria2下载任务
 * ***导入方式： Idea - Open - 本项目根目录Pom文件*** ，加载后将TransferStation-Base模块Maven install，然后ZoraCloudTransferStation层Maven reimport即可。
 * 打包方式：
-  * ```TransferStation-Base模块Maven install -> TransferStation-Cloud 模块 Maven package```
-  * ```                                     -> TransferStation-Consumer 模块 Maven package```
+  * **TransferStation-Base模块 ```Maven install```** -> TransferStation-Cloud 模块 ```Maven package```
+  *                                      -> TransferStation-Consumer 模块 ```Maven package```
 
 ## 所需环境
 
