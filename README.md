@@ -21,18 +21,16 @@
 
 * 配置公共参数 / 公共类 / 公共工具 / 公共依赖
 * 维护密钥信息
-* 配置服务器端URL前缀地址
 
 ### TransferStation-Cloud 服务器端
 
 * 依赖TransferStation-Base包
-
 * 通过携带密钥的REST API接收任务的增删改请求
 * 通过固定接口提供单个任务的信息并修改任务状态
 
 ### TransferStation-Consumer 下载机端
 
 * 依赖TransferStation-Base包
-
+* 配置服务器端地址
 * 通过定时任务请求服务器端获取任务
 * 通过Aria2 RPC请求调用Aria2启动下载任务
