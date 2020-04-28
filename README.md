@@ -5,6 +5,7 @@
 * 打包方式：
   * **TransferStation-Base模块 ```Maven install```** -> TransferStation-Cloud 模块 ```Maven package```
   * -> TransferStation-Consumer 模块 ```Maven package```
+* 使用方式：将`TransferStation-Cloud`的Jar包在服务器端执行，`TransferStation-Consumer`的Jar包在下载机（启动了Aria2的）上执行即可。
 
 ## 所需环境
 
