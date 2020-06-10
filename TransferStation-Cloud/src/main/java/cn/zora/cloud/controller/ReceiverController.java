@@ -29,6 +29,7 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/receiver")
 @Slf4j
+@CrossOrigin(origins = "*")
 @Api(tags = "任务接收器")
 public class ReceiverController {
     @Autowired
